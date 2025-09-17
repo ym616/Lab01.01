@@ -5,7 +5,7 @@ import java.util.Scanner;
  * the jackson five were bangin in their heyday
  * @version 9.15.25
  * @author 28mehta
- * Flint session here:
+ * Flint session here: https://app.flintk12.com/chats/5841ae2a-272d-4824-a3d5-88dcf47f1cd5
  */
 public class SimpleIOMath {
     private String name;
@@ -19,50 +19,37 @@ public class SimpleIOMath {
         Scanner in=new Scanner (System.in);
         System.out.print("Question 1: What is your name? ");
         name=in.nextLine();
-        //TODO: fix this so JC won;t break my program
+
         System.out.print("Question 2: How old are you? ");
-        age=in.nextInt();
+        while (!in.hasNextInt()) {
+            System.out.print("Please enter a number: ");
+            in.next();
+        }
+        age = in.nextInt();
         System.out.print("Question 3: What is your favorite number? ");
-        favNumber=in.nextInt();
+        while (!in.hasNextInt()) {
+            System.out.print("Please enter a number: ");
+            in.next();
+        }
+        favNumber = in.nextInt();
 
 
     }
 
     private boolean isPrime(int n) {
-        // Handle edge cases
-        if (n <= 1) {
-            return false;
-        }
-        if (n <= 3) {
-            return true;
-        }
-        if (n % 2 == 0 || n % 3 == 0) {
-            return false;
-        }
-
-
-        for (int i = 5; i * i <= n; i += 6) {
-            if (n % i == 0 || n % (i + 2) == 0) {
-                return false;
-            }
+        if (n < 2) return false;
+        for (int i = 2; i * i <= n; i++) {
+            if (n % i == 0) return false;
         }
         return true;
     }
 
     private int firstPrimeFactor() {
-        // Handle edge case
-        if (age <= 1) {
-            return -1; // or throw an exception
-        }
-
-        // Check all numbers from 2 up to age
         for (int i = 2; i <= age; i++) {
             if (age % i == 0 && isPrime(i)) {
                 return i;
             }
         }
-
-        // This should never be reached for valid input
         return age;
     }
     /**
@@ -79,8 +66,18 @@ public class SimpleIOMath {
         System.out.println("The first prime factor of " +age+" is: "+firstPrimeFactor());
         System.out.println("Your favorite number is "+favNumber);
         System.out.println("Your favorite number squared is "+(int) (Math.pow(favNumber,2)));
+        System.out.println("You are a " + getAgeCategory());
 
     }
+
+    private String getAgeCategory() {
+        if (age < 13) return "child";
+        if (age < 20) return "teen";
+        if (age < 30) return "half unc";
+        if (age < 60) return "unc";
+        return "wise elder";
+    }
+
     /**
      * Main method for class SimpleIOMath
      * @param args command line arguments, if needed
@@ -92,6 +89,7 @@ public class SimpleIOMath {
         app.promptUser();
         app.printInfo();
         System.out.println("* end of program *");
+
 
     }
 }
