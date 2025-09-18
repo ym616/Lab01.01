@@ -60,12 +60,12 @@ public class SimpleIOMath {
                 "Come on, come on, come on \n" +
                 "Let me tell you what it's all about Reading, writing, arithmetic\n" +
                 "Are the branches of the learning tree \n");
-        System.out.println("Your name is "+name);
-        System.out.println("Your age is "+age);
-        System.out.println("Your next birthday is "+(age+1));
+        System.out.println("Your name is: "+name);
+        System.out.println("Your age is: "+age);
+        System.out.println("At your next birthday, you will turn "+(age+1));
         System.out.println("The first prime factor of " +age+" is: "+firstPrimeFactor());
-        System.out.println("Your favorite number is "+favNumber);
-        System.out.println("Your favorite number squared is "+(int) (Math.pow(favNumber,2)));
+        System.out.println("Your favorite number is: "+favNumber);
+        System.out.println("Your favorite number squared is: "+(int) (Math.pow(favNumber,2)));
         System.out.println("You are a " + getAgeCategory());
 
     }
